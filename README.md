@@ -15,7 +15,7 @@ logo生成器，只需要美工同学提供1024*1024的原图（因为这个图�
 
 >logo60@2x.png // 120*120
 
->logo60@3x.png // 120*120
+>logo60@3x.png // 180*180
 
 ![demonstate](http://7xqjl4.com1.z0.glb.clouddn.com/gitappDemonstrate5.gif)
 
