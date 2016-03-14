@@ -23,7 +23,7 @@
 - (IBAction)pickImageAction:(NSButton *)sender {
 
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [NSOpenPanel openPanel].accessoryViewDisclosed = YES;
+//    [NSOpenPanel openPanel].accessoryViewDisclosed = YES;
     [NSOpenPanel openPanel].canChooseDirectories = YES;
     
     [panel beginWithCompletionHandler:^(NSInteger result) {
