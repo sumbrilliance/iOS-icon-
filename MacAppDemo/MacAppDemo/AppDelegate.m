@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MainVC.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<NSWindowDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @end
@@ -23,11 +23,14 @@
     
 
     self.window.contentViewController = vc;
-    
+    self.window.delegate = self;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
 
+- (void)windowWillClose:(NSNotification *)notification {
+    [NSApp terminate:self];
+}
 @end

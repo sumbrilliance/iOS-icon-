@@ -13,19 +13,29 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="469" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <tokenField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NXp-X4-Kp2">
-                    <rect key="frame" x="50" y="226" width="130" height="26"/>
-                    <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="jh2-Jj-0As">
-                        <font key="font" size="12" name=".PingFangSC-Regular"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </tokenFieldCell>
-                </tokenField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-ob-Mxx">
+                    <rect key="frame" x="18" y="42" width="263" height="69"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="图标重命名添加@3x后缀并批量生成@2x图。可多选，为了避免像素不对齐造成的不必要的额外渲染，请尽量使用3倍pt的像素图" id="HfF-0R-Nlb">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wUs-Tv-qtp">
+                    <rect key="frame" x="287" y="64" width="168" height="32"/>
+                    <buttonCell key="cell" type="push" title="选取图片（3倍图）" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x0H-iG-Vyd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="pickImageForConversion3To2x:" target="-2" id="dn8-Tt-SLL"/>
+                    </connections>
+                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Zh-gM-Kt8">
-                    <rect key="frame" x="194" y="221" width="168" height="32"/>
+                    <rect key="frame" x="287" y="207" width="168" height="32"/>
                     <buttonCell key="cell" type="push" title="选取图片(1024*1024)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YQ3-1a-JdQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -34,7 +44,16 @@
                         <action selector="pickImageAction:" target="-2" id="iVM-L3-dFg"/>
                     </connections>
                 </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0M-q2-Bcm">
+                    <rect key="frame" x="18" y="190" width="263" height="56"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="生成29@2x,29@3x,40@2x,40@3x,60@2x,60@3x的icon（单选）" id="MvP-33-UAQ">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
+            <point key="canvasLocation" x="264.5" y="350"/>
         </customView>
     </objects>
 </document>

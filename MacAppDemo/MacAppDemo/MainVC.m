@@ -20,6 +20,25 @@
     }
     return self;
 }
+- (IBAction)pickImageForConversion3To2x:(NSButton *)sender {
+    NSOpenPanel *mutipleSelectionPanel = [NSOpenPanel openPanel];
+    mutipleSelectionPanel.allowsMultipleSelection = YES;
+    mutipleSelectionPanel.allowedFileTypes = [NSImage imageTypes];
+    
+    [mutipleSelectionPanel beginWithCompletionHandler:^(NSInteger result) {
+        if (result == 1) {
+            
+            [mutipleSelectionPanel.URLs enumerateObjectsUsingBlock:^(NSURL * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self output_2x_ImageFrom_3x_ImageURL:obj];
+                });
+            }];
+
+        }
+        
+    }];
+    
+}
 - (IBAction)pickImageAction:(NSButton *)sender {
 
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -129,6 +148,27 @@
 
 }
 
+- (void)output_2x_ImageFrom_3x_ImageURL:(NSURL*)url {
+    NSImage *pickImage = [[NSImage alloc] initWithContentsOfURL:url];
+    CGFloat screenScale = [NSScreen mainScreen].backingScaleFactor;
+    //            float resImageWidth = pickImage.size.width*screenScale; // 从retina屏还原pt为px
+    //            float resImageHeight = pickImage.size.height*screenScale;
+    float destImageWidth = pickImage.size.width/3*2*screenScale;
+    float destImageHeight = pickImage.size.height/3*2*screenScale;
+    NSImage *newImage = [self scaleImage:pickImage toSize:CGSizeMake(destImageWidth, destImageHeight)];
+    [self writeToLocalImage:newImage withName:@"@2x" fromeURL:url];
+    [self renameImageAppend_3x_SuffixFromURL:url];
+}
+- (void)renameImageAppend_3x_SuffixFromURL:(NSURL *)url {
+    NSMutableString *Mstring = [[NSMutableString alloc] initWithString:url.path];
+    [Mstring insertString:@"@3x" atIndex:Mstring.length-4];
+    NSError *error;
+    [[NSFileManager defaultManager] moveItemAtPath:url.path toPath:Mstring error:&error];
+    if (error) {
+        NSLog(@"重命名失败 --- %@",error);
+    }
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //    NSFont *f = [[NSFont alloc] init];
