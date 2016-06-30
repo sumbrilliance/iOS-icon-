@@ -21,7 +21,8 @@ logo生成器，
 
 ![demonstate](http://7xqjl4.com1.z0.glb.clouddn.com/gitappDemonstrate2.gif)
 
-#### puls高清图重命名并生成@2x图片
+#### plus的3x高清图重命名并生成@2x图片，
+有时候美工同学只给了一套3倍的原图你，并没有以@3x格式作为后缀名，可以这样批量重命名和生成2倍图。
 生成图片与原图在同一目录下，加上相应后缀。
 ![demonstate2](http://7xqjl4.com1.z0.glb.clouddn.com/gitappDemonstrate3.gif)
 
